@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Query, HTTPException
-from app.services.forecast_service import load_forecast_csv
-from app.schemas import ForecastResponse
+from backend.app.services.forecast_service import load_forecast_csv
+from backend.app.schemas import ForecastResponse
 
 router = APIRouter(
     prefix="/forecast",
