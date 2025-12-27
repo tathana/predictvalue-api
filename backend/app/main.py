@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import forecast
+from backend.app.routers import forecast
 
 app = FastAPI(
     title="PredictValue API",
