@@ -13,6 +13,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",              # local dev
+        "http://localhost:5173",
         "https://predictvalue.vercel.app",    # (เผื่อ deploy frontend)
     ],
     allow_credentials=True,
