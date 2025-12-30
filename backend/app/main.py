@@ -8,20 +8,24 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# ✅ CORS CONFIG
+# ======================
+# CORS CONFIG
+# ======================
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",    
-        "http://localhost:5173",          # local dev
-        "https://predictvalue.vercel.app",    # (เผื่อ deploy frontend)
+        "http://localhost:3000",      # local dev
+        "http://localhost:5173",      # local dev
+        "https://predictvalue.vercel.app",  # deploy frontend
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# register router
+# ======================
+# Routers
+# ======================
 app.include_router(forecast.router)
 
 @app.get("/")
