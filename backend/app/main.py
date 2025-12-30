@@ -12,7 +12,8 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",              # local dev
+        "http://localhost:3000",    
+        "http://localhost:5173",          # local dev
         "https://predictvalue.vercel.app",    # (เผื่อ deploy frontend)
     ],
     allow_credentials=True,
