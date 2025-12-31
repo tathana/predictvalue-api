@@ -5,7 +5,7 @@ from backend.app.routers import forecast
 app = FastAPI(
     title="PredictValue API",
     description="Water Quality Forecast API (Statistical Mock)",
-    version="1.0.0"
+    version="1.0.0",
 )
 
 # ======================
@@ -14,9 +14,9 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",      # local dev
-        "http://localhost:5173",      # local dev
-        "https://predictvalue.vercel.app",  # deploy frontend
+        "http://localhost:3000",  # local dev
+        "http://localhost:5173",  # local dev
+        "https://aquasight-web.vercel.app",  # deploy frontend
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -28,9 +28,7 @@ app.add_middleware(
 # ======================
 app.include_router(forecast.router)
 
+
 @app.get("/")
 def root():
-    return {
-        "message": "PredictValue API is running",
-        "docs": "/docs"
-    }
+    return {"message": "PredictValue API is running", "docs": "/docs"}
