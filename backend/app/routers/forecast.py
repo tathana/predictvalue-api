@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Query, HTTPException
+import pandas as pd
 from backend.app.services.forecast_service import (
     load_forecast_csv,
     load_prepared_csv
@@ -82,18 +83,18 @@ def get_timeseries(
         "parameter": parameter,
         "actual": [
             {
-                "date": row["date"],
-                "value": row[parameter]
+                "date": str(row["date"]),
+                "value": float(row[parameter])
             }
             for _, row in past_df.iterrows()
-            if row[parameter] is not None
+            if pd.notna(row[parameter])
         ],
         "forecast": [
             {
-                "date": row["date"],
-                "value": row.get(parameter)
+                "date": str(row["date"]),
+                "value": float(row[parameter])
             }
             for _, row in future_df.iterrows()
-            if row.get(parameter) is not None
+            if parameter in row and pd.notna(row[parameter])
         ]
     }

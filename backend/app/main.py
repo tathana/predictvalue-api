@@ -13,11 +13,7 @@ app = FastAPI(
 # ======================
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",  # local dev
-        "http://localhost:5173",  # local dev
-        "https://aquasight-web.vercel.app",  # deploy frontend
-    ],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
